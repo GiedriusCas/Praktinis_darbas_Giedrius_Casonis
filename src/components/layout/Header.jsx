@@ -1,21 +1,25 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import './header.scss'
 
 function Header() {
+  const isLogedIn = false;
   return (
     <header>
-        <Link href="/" className='logo'>Logo</Link>
+      <div className="container">
+        <Link href="/" className="logo">
+          Logo
+        </Link>
         <nav>
-            <NavLink to={'/'}>Home page</NavLink>
-            <NavLink to={'/login'}>Login</NavLink>
-            <NavLink to={'/regist'}>Register</NavLink>
-            <NavLink to={'/shops'}>Shops</NavLink>
-            <NavLink to={'/add'}>Add Shop</NavLink>
+          <NavLink className='navItem' to={'/'}>Home page</NavLink>
+          <NavLink className='navItem' to={'/login'}>Login</NavLink>
+          <NavLink className='navItem' to={'/regist'}>Register</NavLink>
+          <NavLink className='navItem' to={'/shops'}>Shops</NavLink>
+          <NavLink className='navItem' to={'/add'}>Add Shop</NavLink>
         </nav>
-
-
+      </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;
