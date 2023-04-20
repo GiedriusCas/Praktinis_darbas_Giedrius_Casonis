@@ -1,14 +1,15 @@
 import { useFormik } from 'formik';
 import React from 'react';
 
-function LoginForm() {
+function LoginForm({ onLogin }) {
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: 'jonas@ponas.com',
+      password: '789456',
     },
     onSubmit: (values) => {
       console.log('Form values ===', values);
+      onLogin(values);
     },
   });
   return (
