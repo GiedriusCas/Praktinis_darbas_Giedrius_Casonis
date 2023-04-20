@@ -8,6 +8,7 @@ import RegisterPage from './pages/RegisterPage';
 import AddShopPage from './pages/AddShopPage';
 import ShopsPage from './pages/ShopsPage';
 import Header from './components/layout/Header';
+import { app } from './firebase/firebase';
 
 function App() {
   return (
