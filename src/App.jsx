@@ -8,12 +8,14 @@ import RegisterPage from './pages/RegisterPage';
 import AddShopPage from './pages/AddShopPage';
 import ShopsPage from './pages/ShopsPage';
 import Header from './components/layout/Header';
+import Feedback from './components/ui/feedback/Feedback';
 
 
 function App() {
   return (
     <div className="container">
       <Header />
+      <Feedback />
       <Routes>
         <Route path='/' element={<HomePage />}/>
         <Route path='/login' element={<LoginPage />}/>
