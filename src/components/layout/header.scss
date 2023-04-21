@@ -10,7 +10,11 @@ header {
       font-size: 2.5rem;
   
       display: inline-block;
+      .shopLogo {
+        width: 10rem;
+      }
     }
+    
     .navItem {
       padding: 0.7em 1em;
       display: inline-block;
