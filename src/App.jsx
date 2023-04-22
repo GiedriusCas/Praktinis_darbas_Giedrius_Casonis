@@ -1,6 +1,5 @@
 import './styles/reset.css';
 import './styles/App.css';
-import Grid from './components/ui/grid/Grid';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';

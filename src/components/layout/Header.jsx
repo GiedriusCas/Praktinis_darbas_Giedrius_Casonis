@@ -9,7 +9,7 @@ function Header() {
     <header>
       <div className="container">
         <Link to={'/'} className="logo" hrefLang="">
-          <img className="shopLogo" src="/public/SHOPS (3).jpg" alt="logo" />
+          <img className="shopLogo" src="/src/assets/SHOPS (3).jpg" alt="logo" />
         </Link>
         <nav>
           <NavLink className="navItem" to={'/'}>
