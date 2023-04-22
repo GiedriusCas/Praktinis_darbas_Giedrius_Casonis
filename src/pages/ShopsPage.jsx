@@ -2,6 +2,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { useEffect, useState } from 'react';
 import { useAuthCtx } from '../store/AuthProvider';
+import Grid from '../components/ui/grid/Grid'
 
 function ShopsPage() {
   const { ui } = useAuthCtx();
@@ -24,13 +25,13 @@ function ShopsPage() {
       
     }
     getShops();
-  }, []);
+  }, [ui]);
 
   return (
     <div>
       <h1>ShopsPage</h1>
       <p>This is Shopspage</p>
-      <ul>
+      <Grid className='unlisted' ul cols={3}>
         {shopsArr.map((pObj) =>(
           <li key={pObj.uid}>
             <img src={pObj.imageUrl} alt="shop logo" />
@@ -42,7 +43,7 @@ function ShopsPage() {
             </div>
           </li>
         ))}
-      </ul>
+      </Grid>
     </div>
   );
 }

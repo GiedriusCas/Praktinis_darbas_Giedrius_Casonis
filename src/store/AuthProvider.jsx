@@ -78,6 +78,7 @@ function AuthProvider({ children }) {
   const authCtx = {
     user,
     isLoading,
+    setIsLoading,
     isLoggedIn,
     login,
     logout,

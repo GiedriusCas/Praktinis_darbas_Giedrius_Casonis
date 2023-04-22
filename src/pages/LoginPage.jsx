@@ -5,22 +5,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthCtx } from '../store/AuthProvider';
 
 function LoginPage() {
-  const { login, ui } = useAuthCtx();
-  const navigate = useNavigate();
   
+  const navigate = useNavigate();
+const { login, ui, setIsLoading } = useAuthCtx();
   function loginUser({ email, password }) {
     ui.showLoading();
+    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log('Login success user ===', user);
-        login( user );
-        navigate('/shops')
+        login(user);
+        setIsLoading(false);
+        navigate('/shops');
+
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        ui.showError(errorMessage)
+        ui.showError(errorMessage);
+        setIsLoading(false);
       });
   }
   return (
