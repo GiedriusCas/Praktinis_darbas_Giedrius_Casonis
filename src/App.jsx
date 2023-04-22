@@ -1,7 +1,7 @@
 import './styles/reset.css';
 import './styles/App.css';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
+
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AddShopPage from './pages/AddShopPage';
@@ -16,8 +16,8 @@ function App() {
       <Header />
       <Feedback />
       <Routes>
-        <Route path='/' element={<HomePage />}/>
-        <Route path='/login' element={<LoginPage />}/>
+       
+        <Route path='/' element={<LoginPage />}/>
         <Route path='/regist' element={<RegisterPage />}/>
         <Route path='/add' element={<AddShopPage />}/>
         <Route path='/shops' element={<ShopsPage />}/>

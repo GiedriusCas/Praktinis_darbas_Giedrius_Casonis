@@ -3,7 +3,7 @@ import React from 'react';
 import { useAuthCtx } from '../../store/AuthProvider';
 
 function LoginForm({ onLogin }) {
-  const { isLoading } = useAuthCtx()
+  const { isLoading } = useAuthCtx();
   const formik = useFormik({
     initialValues: {
       email: 'jonas@ponas.com',
@@ -44,7 +44,9 @@ function LoginForm({ onLogin }) {
           <div>{formik.errors.password}</div>
         ) : null}
       </div>
-      <button disabled={isLoading} type="submit">Submit</button>
+      <button disabled={isLoading} type="submit">
+        Submit
+      </button>
     </form>
   );
 }

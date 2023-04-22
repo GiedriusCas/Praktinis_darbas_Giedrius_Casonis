@@ -33,7 +33,7 @@ const navigate = useNavigate();
       <h1>RegisterPage</h1>
       <p>This is Registerpage</p>
       <RegisterForm onRegister={registFireBase} />
-      <Link to={'/login'}>Have account? Login here...</Link>
+      <Link to={'/'}>Have account? Login here...</Link>
     </div>
   );
 }
