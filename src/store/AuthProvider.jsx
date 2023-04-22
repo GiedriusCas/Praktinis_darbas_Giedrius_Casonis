@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext({
   user: {},
@@ -21,34 +21,66 @@ function AuthProvider({ children }) {
     show: false,
     msg: '',
     type: '',
-  })
+  });
+  const { show, msg } = feedback;
+  useEffect(() => {
+    if (show === true && msg !== 'Loading') {
+      setTimeout(() => {
+        setFeedback({
+          show: false,
+          msg: '',
+          type: '',
+        });
+      }, 2500);
+    }
+  }, [show, msg]);
 
-const ui = {
-  showSuccess(){
-  setFeedback({
-    show: true,
-    msg: 'Success',
-    type: 'success',
-  })
-},
-closeAlert(){
-  setFeedback({
-    show: false,
-    msg: '',
-    type: '',
-  })
-}
-}
+  const ui = {
+    showSuccess(msg = '') {
+      setFeedback({
+        show: true,
+        msg: msg || 'Success',
+        type: 'success',
+      });
+    },
+    showError(msg = '') {
+      setFeedback({
+        show: true,
+        msg: msg || 'Klaida',
+        type: 'error',
+      });
+    },
+    showLoading() {
+      setFeedback({
+        show: true,
+        msg: 'Loading',
+        type: 'info',
+      });
+    },
+    closeAlert() {
+      setFeedback({
+        show: false,
+        msg: '',
+        type: '',
+      });
+    },
+  };
 
-  const isLoggedIn = !!user
-  function login(userObj){
+  const isLoggedIn = !!user;
+  function login(userObj) {
     setUser(userObj);
+    ui.showSuccess('User logged in');
+  }
+  function logout() {
+    setUser(null);
+    ui.showSuccess('User logged out');
   }
   const authCtx = {
     user,
     isLoading,
     isLoggedIn,
     login,
+    logout,
     feedback,
     ui,
   };
