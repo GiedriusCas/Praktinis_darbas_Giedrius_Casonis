@@ -1,20 +1,27 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { useEffect, useState } from 'react';
+import { useAuthCtx } from '../store/AuthProvider';
 
 function ShopsPage() {
+  const { ui } = useAuthCtx();
   const [shopsArr, setShopsArr] = useState([]);
 
   useEffect(() => {
     async function getShops() {
-      const querySnapshot = await getDocs(collection(db, 'shops'));
+      try {
+       const querySnapshot = await getDocs(collection(db, 'shops'));
       const tempShops = [];
       querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data()}`);
         tempShops.push({uid: doc.id, ...doc.data()})
       });
     console.log('tempShops ===', tempShops);
-      setShopsArr(tempShops)
+      setShopsArr(tempShops) 
+      } catch (error) {
+        ui.showError('Only registered users')
+      }
+      
     }
     getShops();
   }, []);

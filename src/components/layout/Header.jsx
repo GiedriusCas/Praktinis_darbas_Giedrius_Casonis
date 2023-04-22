@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './header.scss';
 import { useAuthCtx } from '../../store/AuthProvider';
+import Logout from '../auth/Logout';
 
 function Header() {
   const { isLoggedIn } = useAuthCtx();
@@ -15,23 +16,31 @@ function Header() {
           <NavLink className="navItem" to={'/'}>
             Home page
           </NavLink>
+          {!isLoggedIn && (
+          <>
           <NavLink className="navItem" to={'/login'}>
             Login
           </NavLink>
           <NavLink className="navItem" to={'/regist'}>
             Register
           </NavLink>
+          </>
+          )}
+          
           {isLoggedIn && (
+            <>
             <NavLink className="navItem" to={'/shops'}>
               Shops
             </NavLink>
-          )}
-          {isLoggedIn && (
             <NavLink className="navItem" to={'/add'}>
               Add Shop
             </NavLink>
+            <NavLink className="navItem" to={'/login'}>
+            <Logout />
+          </NavLink>
+            </>
           )}
-        </nav>
+           </nav>
       </div>
     </header>
   );

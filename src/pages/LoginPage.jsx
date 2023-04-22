@@ -1,24 +1,26 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import LoginForm from '../components/auth/LoginForm';
 import { auth } from '../firebase/firebase';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthCtx } from '../store/AuthProvider';
 
 function LoginPage() {
   const { login, ui } = useAuthCtx();
+  const navigate = useNavigate();
   
   function loginUser({ email, password }) {
+    ui.showLoading();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log('Login success user ===', user);
         login( user );
-        ui.showSuccess();
+        navigate('/shops')
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log('errorMessage ===', errorMessage);
+        ui.showError(errorMessage)
       });
   }
   return (
