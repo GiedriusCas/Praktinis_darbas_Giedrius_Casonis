@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthCtx } from '../../store/AuthProvider';
 import { useFormik } from 'formik';
+import './newShop.scss'
 
 const NewShopForm = ({ onNewShop }) => {
   const { user } = useAuthCtx();
@@ -55,7 +56,7 @@ const NewShopForm = ({ onNewShop }) => {
         ) : null}
         <label htmlFor="startYear">Start Year</label>
         <input
-          type="text"
+          type="number"
           id="startYear"
           name="startYear"
           onChange={formik.handleChange}
@@ -65,6 +66,31 @@ const NewShopForm = ({ onNewShop }) => {
         {formik.touched.startYear && formik.errors.startYear ? (
           <div className="error-message">{formik.errors.startYear}</div>
         ) : null}
+        <label htmlFor="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.description}
+        />
+        {formik.touched.description && formik.errors.description ? (
+          <div className="error-message">{formik.errors.description}</div>
+        ) : null}
+        <label htmlFor="imageUrl">Image url</label>
+        <input
+          type="text"
+          id="imageUrl"
+          name="imageUrl"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.imageUrl}
+        />
+        {formik.touched.imageUrl && formik.errors.imageUrl ? (
+          <div className="error-message">{formik.errors.imageUrl}</div>
+        ) : null}
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
