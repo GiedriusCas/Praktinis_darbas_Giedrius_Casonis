@@ -1,0 +1,20 @@
+label {
+  margin-top: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+button[type='submit'] {
+  margin-top: 2rem;
+  transition: font-size 0.5s;
+}
+button[type='submit']:hover {
+  font-size: 200%;
+}
+.error-message {
+  color: red;
+  font-size: 1.2rem;
+  
+}
+input {
+  background-color: #e9e3e3;
+}
