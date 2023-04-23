@@ -29,7 +29,7 @@ const navigate = useNavigate();
       });
   }
   return (
-    <div>
+    <div className="container">
       <h1>RegisterPage</h1>
       <p>This is Registerpage</p>
       <RegisterForm onRegister={registFireBase} />

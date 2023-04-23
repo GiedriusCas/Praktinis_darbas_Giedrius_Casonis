@@ -2,7 +2,9 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { useEffect, useState } from 'react';
 import { useAuthCtx } from '../store/AuthProvider';
-
+import Grid from '../components/ui/grid/Grid';
+import Card from '../components/ui/card/Card';
+import './shopsPage.scss';
 
 function ShopsPage() {
   const { ui } = useAuthCtx();
@@ -27,21 +29,24 @@ function ShopsPage() {
   }, [ui]);
 
   return (
-    <div>
+    <div className="container">
       <h1>ShopsPage</h1>
       <p>This is Shopspage</p>
-
-      {shopsArr.map((pObj) => (
-        <li key={pObj.uid}>
-          <img src={pObj.imageUrl} alt="shop logo" />
-          <div>
-            <h3>{pObj.shopName}</h3>
-            <p>{pObj.description}</p>
-            <p>{pObj.town}</p>
-            <p>{pObj.startYear}</p>
-          </div>
-        </li>
-      ))}
+      <Grid>
+        {shopsArr.map((pObj) => (
+          <Card>
+          <li key={pObj.uid}>
+            <img src={pObj.imageUrl} alt="shop logo" />
+            <div>
+              <h2>{pObj.shopName}</h2>
+              <p>{pObj.description}</p>
+              <p>{pObj.town}</p>
+              <p>{pObj.startYear}</p>
+            </div>
+          </li>
+          </Card>
+        ))}
+      </Grid>
     </div>
   );
 }

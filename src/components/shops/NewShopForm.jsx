@@ -20,6 +20,7 @@ const NewShopForm = ({ onNewShop }) => {
       if (!values.town) errors.town = 'Town is required';
       if (!values.startYear) errors.startYear = 'Est. Year is required';
       if (!values.description) errors.description = 'Description is required';
+      if (!values.imageUrl) errors.imageUrl = 'Image Url is required';
       return errors;
     },
     onSubmit: (values) => {

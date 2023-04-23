@@ -17,7 +17,7 @@ function AddShopPage() {
     }
   }
     return (
-      <div>
+      <div className="container">
           <h1>AddShopPage</h1>
           <p>This is AddShoppage</p>
           <NewShopForm onNewShop={createShop}/>
