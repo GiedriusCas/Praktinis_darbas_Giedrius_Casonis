@@ -1,6 +1,7 @@
 import { useFormik } from 'formik';
 import React from 'react';
 import { useAuthCtx } from '../../store/AuthProvider';
+import * as Yup from 'yup'
 
 function LoginForm({ onLogin }) {
   const { isLoading } = useAuthCtx();
@@ -9,6 +10,10 @@ function LoginForm({ onLogin }) {
       email: 'jonas@ponas.com',
       password: '789456',
     },
+    validationSchema: Yup.object({
+      email: Yup.string().email().required(),
+      password: Yup.string().min(6).trim().required(),
+    }),
     onSubmit: (values) => {
       console.log('Form values ===', values);
       onLogin(values);

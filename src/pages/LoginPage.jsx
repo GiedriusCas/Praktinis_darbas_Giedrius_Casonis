@@ -31,7 +31,7 @@ const { login, ui, setIsLoading } = useAuthCtx();
       <h1>LoginPage</h1>
       <p>This is Loginpage</p>
       <LoginForm onLogin={loginUser} />
-      <Link to={'/regist'}>New user? Regist here...</Link>
+      <Link to={'/regist'}>New user? Register here...</Link>
     </div>
   );
 }

@@ -8,21 +8,27 @@ header {
     }
     .logo {
       font-size: 2.5rem;
-  
+      margin: 2rem 0;
       display: inline-block;
-      .shopLogo {
-        width: 10rem;
+
+    .shopLogo {
+      width: 10rem;
+      border-radius: 2px;
+
       }
     }
     
     .navItem {
       padding: 0.7em 1em;
       display: inline-block;
+      border-radius: 4px;
+      transition: font-size 0.5s;
     }
     .navItem.active {
-      background-color: #858585;
+      background-color: #7758f6;
     }
     .navItem:hover {
-      background-color: #858585;
+      background-color: #8365f9;
+      font-size: 2rem;
     }
   }

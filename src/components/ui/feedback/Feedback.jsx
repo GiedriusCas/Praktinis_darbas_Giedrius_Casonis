@@ -7,7 +7,7 @@ function Feedback() {
     const { show, type, msg } = feedback;
     const handleClose = () => ui.closeAlert(); 
   return show? (
-    <div className={`feedback-container ${type}`}>
+    <div className={`container feedback-container ${type}`}>
         <p className='msg'>{msg}</p>
         <button className="close-button" onClick={handleClose}>
         &times;

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useAuthCtx } from '../../store/AuthProvider';
 import { useFormik } from 'formik';
-import './newShop.scss'
+import './newShop.scss';
+import * as Yup from 'yup';
 
 const NewShopForm = ({ onNewShop }) => {
   const { user } = useAuthCtx();
@@ -14,15 +15,13 @@ const NewShopForm = ({ onNewShop }) => {
       description: '',
       imageUrl: '',
     },
-    validate: (values) => {
-      const errors = {};
-      if (!values.shopName) errors.shopName = 'Shop name is required';
-      if (!values.town) errors.town = 'Town is required';
-      if (!values.startYear) errors.startYear = 'Est. Year is required';
-      if (!values.description) errors.description = 'Description is required';
-      if (!values.imageUrl) errors.imageUrl = 'Image Url is required';
-      return errors;
-    },
+    validationSchema: Yup.object({
+      shopName: Yup.string().min(4).required(),
+      town: Yup.string().min(4).required(),
+      startYear: Yup.number().min(1970).max(2022).required(),
+      description: Yup.string().min(6).required(),
+      imageUrl: Yup.string().min(5).required(),
+    }),
     onSubmit: (values) => {
       onNewShop(values);
     },

@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import React from 'react';
+import * as Yup from 'yup'
 
 function RegisterForm({ onRegister }) {
   const formik = useFormik({
@@ -7,6 +8,10 @@ function RegisterForm({ onRegister }) {
       email: '',
       password: '',
     },
+    validationSchema: Yup.object({
+      email: Yup.string().email().required(),
+      password: Yup.string().min(6).trim().required(),
+    }),
     onSubmit: (values) => {
       console.log('Form values ===', values);
       const {password} = formik.values;
@@ -46,7 +51,7 @@ function RegisterForm({ onRegister }) {
           <div>{formik.errors.password}</div>
         ) : null}
       </div>
-      <button type="submit">Regist</button>
+      <button type="submit">Register</button>
     </form>
   );
 }

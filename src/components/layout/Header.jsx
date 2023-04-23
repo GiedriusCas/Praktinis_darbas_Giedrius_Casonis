@@ -9,13 +9,24 @@ function Header() {
   return (
     <header>
       <div className="container">
-        <Link to={'/'} className="logo" hrefLang="">
-          <img
-            className="shopLogo"
-            src="/src/assets/SHOPS (3).jpg"
-            alt="logo"
-          />
-        </Link>
+        {isLoggedIn ? (
+          <Link to={'/shops'} className="logo" hrefLang="">
+            <img
+              className="shopLogo"
+              src="/src/assets/SHOPS (3).jpg"
+              alt="logo"
+            />
+          </Link>
+        ) : (
+          <Link to={'/'} className="logo" hrefLang="">
+            <img
+              className="shopLogo"
+              src="/src/assets/SHOPS (3).jpg"
+              alt="logo"
+            />
+          </Link>
+        )}
+
         <nav>
           {!isLoggedIn && (
             <>
