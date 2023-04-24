@@ -31,22 +31,43 @@ function ShopsPage() {
   return (
     <div className="container pageTop">
       <h1>Shops page</h1>
-      <h2>Parduotuvės atvaizduotos iš 'shops' Firebase</h2>
-      <Grid>
-        {shopsArr.map((pObj) => (
-          <Card>
-          <li key={pObj.uid}>
-            <img className='shopsImg' src={pObj.imageUrl} alt="shop logo" />
-            <div>
-              <h3 className='shopsText'><span>Parduotuvė: </span>{pObj.shopName}</h3>
-              <p className='shopsText'><span>Aprašymas: </span>{pObj.description}</p>
-              <h4 className='shopsText'><span>Miestas: </span> {pObj.town}</h4>
-              <h4 className='shopsText'><span>Įkurta: </span> {pObj.startYear}</h4>
-            </div>
-          </li>
-          </Card>
-        ))}
-      </Grid>
+
+      {shopsArr.length !== null ? (
+        <>
+          <h2>Parduotuvės atvaizduotos iš 'shops' Firebase</h2>
+          <Grid>
+            {shopsArr.map((pObj) => (
+              <Card>
+                <li key={pObj.uid}>
+                  <img
+                    className="shopsImg"
+                    src={pObj.imageUrl}
+                    alt="shop logo"
+                  />
+                  <div>
+                    <h3 className="shopsText">
+                      <span>Parduotuvė: </span>
+                      {pObj.shopName}
+                    </h3>
+                    <p className="shopsText">
+                      <span>Aprašymas: </span>
+                      {pObj.description}
+                    </p>
+                    <h4 className="shopsText">
+                      <span>Miestas: </span> {pObj.town}
+                    </h4>
+                    <h4 className="shopsText">
+                      <span>Įkurta: </span> {pObj.startYear}
+                    </h4>
+                  </div>
+                </li>
+              </Card>
+            ))}
+          </Grid>
+        </>
+      ) : (
+        <h2>Šiuo metu parduotuvių nerasta</h2>
+      )}
     </div>
   );
 }
