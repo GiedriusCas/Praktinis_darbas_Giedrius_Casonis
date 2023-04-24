@@ -1,7 +1,8 @@
 label {
-  margin-top: 2rem;
   font-size: 2rem;
   font-weight: bold;
+  line-height: 1.5;
+  
 }
 button[type='submit'] {
   margin-top: 2rem;
@@ -11,10 +12,15 @@ button[type='submit']:hover {
   font-size: 200%;
 }
 .error-message {
-  color: red;
+  color: rgb(213, 7, 7);
   font-size: 1.2rem;
-  
 }
 input {
-  background-color: #e9e3e3;
+  background-color: #dad7d7;
+}
+input.filled {
+  background-color: #b4f59c;
+}
+input.errorMsg {
+  background-color: #f19c9c;
 }
