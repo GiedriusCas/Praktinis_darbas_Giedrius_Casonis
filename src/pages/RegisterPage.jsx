@@ -5,35 +5,40 @@ import { auth } from '../firebase/firebase';
 import { useAuthCtx } from '../store/AuthProvider';
 
 function RegisterPage() {
-const { ui } = useAuthCtx();
+const { ui, setIsLoading } = useAuthCtx();
 const navigate = useNavigate();
 
   function registFireBase({ email, password }) {
     ui.showLoading();
-    console.log('email, password ===', { email, password });
+    //console.log('email, password ===', { email, password });
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        console.log('user ===', user);
+        // const user = userCredential.user;
+        // console.log('user ===', user);
         ui.showSuccess();
-        navigate('/login');
+        setIsLoading(false)
+        navigate('/');
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
+        //const errorCode = error.code;
         const errorMessage = error.message;
-        console.log('error.message ===', error.message);
+        //console.log('error.message ===', error.message);
         // ..
+        ui.showError(errorMessage)
+        setIsLoading(false)
       });
   }
+  
   return (
-    <div className="container">
-      <h1>RegisterPage</h1>
-      <p>This is Registerpage</p>
-      <RegisterForm onRegister={registFireBase} />
+    <div className="container pageTop">
+      <h1>Register page</h1>
+      <h2>Fill in the form fields. If the entered data is incorrect, you will find warnings about what to correct under the input fields</h2>
       <Link to={'/'}>Have an account? Login here...</Link>
+      <RegisterForm onRegister={registFireBase} />
+      
     </div>
   );
 }

@@ -4,26 +4,29 @@
     // left: 50%;
     // transform: translateX(-50%);
     position: relative;
-    padding: 10px;
-    color: white;
+    padding: 8px;
+    color: black;
     text-align: center;
     z-index: 10;
-    width: 100%;
+    width: 65%;
+    border-radius: 1rem;
+    margin-top: 10rem;
   
     .msg {
       font-size: 2.5rem;
+      margin-top: 2.5rem;
     }
   
     &.success {
-      background-color: #4caf50;
+      background-color: #d2f5c5;
     }
   
     &.error {
-      background-color: #f44336;
+      background-color: #f19c9c;
     }
   
     &.info {
-      background-color: #cfc91f;
+      background-color: #f0ed7f;
     }
   }
   
@@ -34,7 +37,7 @@
     transform: translateY(-50%);
     background-color: transparent;
     border: none;
-    color: white;
+    color: black;
     font-size: 18px;
     cursor: pointer;
   

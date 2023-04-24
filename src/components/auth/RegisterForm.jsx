@@ -13,7 +13,7 @@ function RegisterForm({ onRegister }) {
       password: Yup.string().min(6).trim().required(),
     }),
     onSubmit: (values) => {
-      console.log('Form values ===', values);
+      //console.log('Form values ===', values);
       const {password} = formik.values;
      onRegister({
       email: values.email,
@@ -32,9 +32,10 @@ function RegisterForm({ onRegister }) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
+          className={formik.touched.email && formik.errors.email ? 'errorMsg' : formik.values.email ? 'filled' : ''}
         />
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+          <div className='error-message'>{formik.errors.email}</div>
         ) : null}
       </div>
       <div>
@@ -46,9 +47,10 @@ function RegisterForm({ onRegister }) {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
+          className={formik.touched.password && formik.errors.password ? 'errorMsg' : formik.values.password ? 'filled' : ''}
         />
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
+          <div className='error-message'>{formik.errors.password}</div>
         ) : null}
       </div>
       <button type="submit">Register</button>

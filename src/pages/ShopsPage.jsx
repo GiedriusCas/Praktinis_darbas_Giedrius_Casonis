@@ -16,10 +16,10 @@ function ShopsPage() {
         const querySnapshot = await getDocs(collection(db, 'shops'));
         const tempShops = [];
         querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data()}`);
+          //console.log(`${doc.id} => ${doc.data()}`);
           tempShops.push({ uid: doc.id, ...doc.data() });
         });
-        console.log('tempShops ===', tempShops);
+        //console.log('tempShops ===', tempShops);
         setShopsArr(tempShops);
       } catch (error) {
         ui.showError('Only registered users');
@@ -29,19 +29,19 @@ function ShopsPage() {
   }, [ui]);
 
   return (
-    <div className="container">
-      <h1>ShopsPage</h1>
-      <p>This is Shopspage</p>
+    <div className="container pageTop">
+      <h1>Shops page</h1>
+      <h2>Parduotuvės atvaizduotos iš 'shops' Firebase</h2>
       <Grid>
         {shopsArr.map((pObj) => (
           <Card>
           <li key={pObj.uid}>
-            <img src={pObj.imageUrl} alt="shop logo" />
+            <img className='shopsImg' src={pObj.imageUrl} alt="shop logo" />
             <div>
-              <h2>{pObj.shopName}</h2>
-              <p>{pObj.description}</p>
-              <p>{pObj.town}</p>
-              <p>{pObj.startYear}</p>
+              <h3 className='shopsText'><span>Parduotuvė: </span>{pObj.shopName}</h3>
+              <p className='shopsText'><span>Aprašymas: </span>{pObj.description}</p>
+              <h4 className='shopsText'><span>Miestas: </span> {pObj.town}</h4>
+              <h4 className='shopsText'><span>Įkurta: </span> {pObj.startYear}</h4>
             </div>
           </li>
           </Card>

@@ -7,7 +7,7 @@ import LoginForm from '../components/auth/LoginForm';
 import { auth, googleProvider } from '../firebase/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthCtx } from '../store/AuthProvider';
-import './loginPage.scss';
+
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function LoginPage() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log('Login success user ===', user);
+        //console.log('Login success user ===', user);
         login(user);
         setIsLoading(false);
         navigate('/shops');
@@ -40,7 +40,7 @@ function LoginPage() {
         const user = result.user;
         // IdP data available using getAdditionalUserInfo(result)
         // ...
-        console.log('user ===', user);
+        //console.log('user ===', user);
         login(user);
         setIsLoading(false);
         navigate('/shops');
@@ -60,13 +60,13 @@ function LoginPage() {
       });
   }
   return (
-    <div className="container">
-      <h1>LoginPage</h1>
-      <p>This is Loginpage</p>
+    <div className="container pageTop">
+      <h1>Login page</h1>
+      <h2>Fill in the form fields. If the entered data is incorrect, you will find warnings about what to correct under the input fields</h2>
       <Link to={'/regist'}>New user? Register here...</Link>
       <LoginForm onLogin={loginUser} />
       <p>or</p>
-      <button onClick={loginWithGoogle}>Login with Google account</button>
+      <button onClick={loginWithGoogle} type='submit'>Login with Google account</button>
     </div>
   );
 }
