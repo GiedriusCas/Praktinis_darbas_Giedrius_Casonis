@@ -2,7 +2,7 @@ import React from 'react'
 import { useAuthCtx } from '../../store/AuthProvider'
 import { signOut } from 'firebase/auth';
 import { auth } from '../../firebase/firebase';
-import './logout.scss'
+
 
 function Logout() {
     const { isLoggedIn, logout } = useAuthCtx();

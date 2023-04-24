@@ -8,7 +8,7 @@
     color: black;
     text-align: center;
     z-index: 10;
-    width: 65%;
+    width: 50rem;
     border-radius: 1rem;
     margin-top: 10rem;
   
@@ -18,7 +18,7 @@
     }
   
     &.success {
-      background-color: #d2f5c5;
+      background-color: #80f7c3;
     }
   
     &.error {

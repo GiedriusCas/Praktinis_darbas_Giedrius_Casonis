@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuthCtx } from '../../store/AuthProvider';
 import { useFormik } from 'formik';
-import './newShop.scss';
+import './newShopForm.scss';
 import * as Yup from 'yup';
 
 const NewShopForm = ({ onNewShop }) => {
