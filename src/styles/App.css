@@ -1,0 +1,8 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('/src/assets/pexels-alexander-grey-5922572.jpg');
+    background-position: center ;
+    background-repeat: repeat-y;
+    background-size: cover;        
+}

@@ -1,14 +1,12 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { useAuthCtx } from '../../store/AuthProvider';
 import * as Yup from 'yup'
 
-function LoginForm({ onLogin }) {
-  const { isLoading } = useAuthCtx();
+function RegisterForm({ onRegister }) {
   const formik = useFormik({
     initialValues: {
-      email: 'jonas@ponas.com',
-      password: '789456',
+      email: '',
+      password: '',
     },
     validationSchema: Yup.object({
       email: Yup.string().email().required(),
@@ -16,7 +14,11 @@ function LoginForm({ onLogin }) {
     }),
     onSubmit: (values) => {
       //console.log('Form values ===', values);
-      onLogin(values);
+      const {password} = formik.values;
+     onRegister({
+      email: values.email,
+      password,
+     })
     },
   });
   return (
@@ -51,11 +53,9 @@ function LoginForm({ onLogin }) {
           <div className='error-message'>{formik.errors.password}</div>
         ) : null}
       </div>
-      <button disabled={isLoading} type="submit">
-        Submit
-      </button>
+      <button type="submit">Register</button>
     </form>
   );
 }
 
-export default LoginForm;
+export default RegisterForm;

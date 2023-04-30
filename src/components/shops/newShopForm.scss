@@ -1,0 +1,35 @@
+label {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.5;
+  
+}
+button[type='submit'] {
+  margin-top: 2rem;
+  transition: font-size 0.5s;
+}
+button[type='submit']:hover {
+  font-size: 200%;
+}
+.error-message {
+  color: rgb(213, 7, 7);
+  font-size: 1.2rem;
+}
+input {
+  background-color: #dad7d7;
+}
+input.filled {
+  background-color: #b4f59c;
+}
+input.errorMsg {
+  background-color: #f19c9c;
+}
+form {
+  margin: 2rem 0 2.5rem;
+}
+button {
+  background-color: #5025ee;
+  color: white;
+  font-size: 1.6rem;
+  padding: 1rem 2rem;
+}
